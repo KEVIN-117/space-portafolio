@@ -8,7 +8,7 @@ export function Hero() {
                 autoPlay
                 muted
                 loop
-                className="md:absolute md:top-[-225px] md:h-full h-screen md:w-full w-screen left-0 z-[1] object-cover "
+                className="absolute md:top-[-225px] md:h-full h-screen md:w-full w-screen left-0 z-[1] object-cover "
             >
                 <source src="/blackhole.webm" type="video/webm" />
             </video>

@@ -1,4 +1,6 @@
-export function slideInFromLeft(delay: number) {
+import { Variants } from "framer-motion";
+
+export function slideInFromLeft(delay: number): Variants {
     return {
         hidden: { x: -100, opacity: 0 },
         visible: {
@@ -6,7 +8,7 @@ export function slideInFromLeft(delay: number) {
             opacity: 1,
             transition: {
                 delay: delay,
-                duration: 0.5,
+                duration: 0.8,
             },
         },
     };
