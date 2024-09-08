@@ -1,3 +1,4 @@
+import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/utils/motion"
 import { motion } from "framer-motion"
 
 export function Skills() {
@@ -20,6 +21,9 @@ export function Skills() {
                     className="flex flex-col md:w-full w-[95%] mt-0 md:mt-10"
                 >
                     <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={slideInFromLeft(0.8)}
                         className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b] opacity-[0.9]"
                     >
                         <h1 className="Welcome-text text-base">
@@ -27,6 +31,9 @@ export function Skills() {
                         </h1>
                     </motion.div>
                     <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={slideInFromTop(0.8)}
                         className="flex flex-col gap-6 mt-6 md:text-6xl text-4xl font-bold w-full text-white h-auto"
                     >
                         <span>
@@ -39,10 +46,13 @@ export function Skills() {
                 </motion.div>
 
                 <motion.div
+                    variants={slideInFromTop(0.8)}
                     className="w-full h-full flex flex-col items-center justify-center"
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
-                        <div className="bg-stone-950/40 rounded-xl p-4">
+                    <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+                        <motion.div
+                            variants={slideInFromLeft(0.8)}
+                            className="bg-stone-950/40 rounded-xl p-4">
                             <h1 className="relative text-white flex gap-4 text-2xl font-bold">
                                 Frontend
                                 <img src="/mui.png" alt="frontend" className="absolute right-0 w-16 h-16 inline-block" />
@@ -54,8 +64,10 @@ export function Skills() {
                                 <li>Vue.js</li>
                                 <li>Astro</li>
                             </ul>
-                        </div>
-                        <div className="bg-stone-950/40 rounded-xl p-4">
+                        </motion.div>
+                        <motion.div
+                            variants={slideInFromTop(0.8)}
+                            className="bg-stone-950/40 rounded-xl p-4">
                             <h1 className="relative text-white flex gap-4 text-2xl font-bold">
                                 Backend
                                 <img src="/prisma.webp" alt="backend" className="absolute right-0 w-16 h-16 inline-block" />
@@ -68,8 +80,10 @@ export function Skills() {
                                 <li>TypeScript</li>
                                 <li>C++</li>
                             </ul>
-                        </div>
-                        <div className="bg-stone-950/40 rounded-xl p-4">
+                        </motion.div>
+                        <motion.div
+                            variants={slideInFromRight(0.8)}
+                            className="bg-stone-950/40 rounded-xl p-4">
                             <h1 className="relative text-white flex gap-4 text-2xl font-bold">
                                 DevOps
                                 <img src="/docker.webp" alt="devops" className="absolute right-0 w-16 h-16 inline-block" />
@@ -81,8 +95,8 @@ export function Skills() {
                                 <li>Implementación continua</li>
                                 <li>Programación funcional</li>
                             </ul>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </motion.div>
 
             </motion.div>
