@@ -1,11 +1,11 @@
 "use client";
 import { cn } from "@/utils/Cn"
 import { ClassValue } from "clsx"
-import { useMotionValue, motion, useMotionTemplate } from "framer-motion"
+import { useMotionValue, motion, useMotionTemplate } from "motion/react"
 import React from "react"
 
 interface IHeroHighlightProps {
-    children: React.ReactNode | JSX.Element,
+    children: React.ReactNode,
     className?: ClassValue,
     containerClassName?: ClassValue,
 }

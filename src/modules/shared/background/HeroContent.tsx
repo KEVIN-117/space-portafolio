@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
     slideInFromLeft,
     slideInFromRight,
@@ -14,9 +14,32 @@ const HeroContent = () => {
     return (
         <>
             <motion.div
-                initial="hidden"
-                animate="visible"
                 className="md:container mx-auto grid md:grid-cols-2 grid-cols-1 items-center md:py-0 py-10 justify-between md:px-20 px-2 md:mt-[15rem] mt-[19rem] z-[20] backdrop-blur-lg bg-stone-950/40 rounded-xl"
+                variants={{
+                    hidden: { 
+                        x: 0,
+                        y: -50,
+                        opacity: 0,
+                        transition: {
+                            type: 'spring',
+                            stiffness: 300,
+                            damping: 100
+                        }
+                    },
+                    visible: { 
+                        x: 0,
+                        y: 0,
+                        opacity: 1, 
+                        transition: {
+                            type: 'spring',
+                            stiffness: 300,
+                            delay: 0.2,
+                        }
+                    },
+                }}
+                initial="hidden"
+                viewport={{once: false, amount: 0.5}}
+                whileInView={'visible'}
             >
                 <motion.div
                     variants={slideInFromLeft(0.5)}

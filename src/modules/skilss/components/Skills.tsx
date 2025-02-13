@@ -1,5 +1,5 @@
-import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/utils/motion"
-import { motion } from "framer-motion"
+import { slideInFromBottom, slideInFromLeft, slideInFromRight, slideInFromTop } from "@/utils/motion"
+import { motion } from "motion/react"
 
 export function Skills() {
     return (
@@ -13,8 +13,10 @@ export function Skills() {
                 <source src="/cards-video.webm" type="video/webm" />
             </video >
             <motion.div
+                variants={slideInFromTop(0.8)}
                 initial="hidden"
-                animate="visible"
+                whileInView={'visible'}
+                viewport={{ once: false, amount: 0.5 }}
                 className="md:container mx-auto grid grid-cols-1 items-center md:py-0 py-10 justify-between md:px-20 px-2 z-[20] bg-stone-950/40 rounded-xl"
             >
                 <motion.div
@@ -52,6 +54,9 @@ export function Skills() {
                     <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
                         <motion.div
                             variants={slideInFromLeft(0.8)}
+                            initial="hidden"
+                            whileInView={'visible'}
+                            viewport={{ once: false, amount: 0.5 }}
                             className="bg-stone-950/40 rounded-xl p-4">
                             <h1 className="relative text-white flex gap-4 text-2xl font-bold">
                                 Frontend
@@ -66,7 +71,10 @@ export function Skills() {
                             </ul>
                         </motion.div>
                         <motion.div
-                            variants={slideInFromTop(0.8)}
+                            variants={slideInFromBottom(0.8)}
+                            initial="hidden"
+                            whileInView={'visible'}
+                            viewport={{ once: false, amount: 0.5 }}
                             className="bg-stone-950/40 rounded-xl p-4">
                             <h1 className="relative text-white flex gap-4 text-2xl font-bold">
                                 Backend
@@ -83,6 +91,9 @@ export function Skills() {
                         </motion.div>
                         <motion.div
                             variants={slideInFromRight(0.8)}
+                            initial="hidden"
+                            whileInView={'visible'}
+                            viewport={{ once: false, amount: 0.5 }}
                             className="bg-stone-950/40 rounded-xl p-4">
                             <h1 className="relative text-white flex gap-4 text-2xl font-bold">
                                 DevOps
