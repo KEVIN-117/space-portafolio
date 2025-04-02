@@ -1,9 +1,53 @@
+import { useEffect, useRef, useState } from 'react';
 import { slideInFromBottom, slideInFromLeft, slideInFromRight, slideInFromTop } from "@/utils/motion"
 import { motion } from "motion/react"
+import { assert } from 'console';
 
 export function Skills() {
+    const CardRef = useRef(null);
+    const [mouseX, setMouseX] = useState(0);
+    const [mouseY, setMouseY] = useState(0);
+    const [color, setColor] = useState<string>('#0c0a0966')
+    const [isMouseInside, setIsMouseInside] = useState(false);
+    const colors = ['#a855f7', '#06b6d4', '#f59e0b', '#10b981', '#3b82f6', '#ef4444', '#f87171', '#fbbf24', '#34d399', '#4ade80', '#60a5fa', '#7c3aed']
+
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if(!isMouseInside) setIsMouseInside(true)
+        const rect = e.currentTarget.getBoundingClientRect();
+        setMouseX(e.clientX - rect.left)
+        setMouseY(e.clientY - rect.top)
+        // setColor(randomColor)
+        //setColor(`rgba(${mouseX}, ${mouseY}, 0, 0.5)`)
+    }
+
+    const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+        setMouseX(0)
+        setMouseY(0)
+        setIsMouseInside(false)
+        // setColor('#0c0a0966')
+        setColor('#0c0a0966');
+    }
+
+    useEffect(() => {
+        if (!isMouseInside) return;
+        const interval = setInterval(() => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            setColor(randomColor);
+        }, 800); // Cambia de color cada 800ms
+
+        return () => clearInterval(interval);
+    }, [isMouseInside]);
+
+    const gradientOpacity = 0.5
+    const applyGradient = {
+        background: `radial-gradient(circle at ${mouseX}px ${mouseY}px, ${color}, #0c0a0966)`,
+        opacity: gradientOpacity,
+        transition: "background 5s ease-in-out"
+    }
+
     return (
-        <div className="relative container flex flex-col h-full w-full" id="about-me">
+        <div className="relative my-5 container flex flex-col mx-auto justify-center h-full w-full" id="about-me">
             <video
                 autoPlay
                 muted
@@ -53,10 +97,14 @@ export function Skills() {
                 >
                     <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
                         <motion.div
+                            ref={CardRef}
                             variants={slideInFromLeft(0.8)}
                             initial="hidden"
                             whileInView={'visible'}
                             viewport={{ once: false, amount: 0.5 }}
+                            onMouseMove={(e) => handleMouseMove(e)}
+                            onMouseLeave={(e) => handleMouseLeave(e)}
+                            style={applyGradient}
                             className="bg-stone-950/40 rounded-xl p-4">
                             <h1 className="relative text-white flex gap-4 text-2xl font-bold">
                                 Frontend

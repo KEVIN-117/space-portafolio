@@ -13,7 +13,7 @@ export function Info() {
     }
     return (
         <motion.div
-            className=" container mx-auto grid md:grid-cols-2 grid-cols-1 items-center md:py-0 justify-between md:mt-[1rem] bg-stone-950/20 backdrop-blur-sm rounded-xl overflow-hidden"
+            className="h-[60%] container mx-auto grid md:grid-cols-2 grid-cols-1 items-center md:py-0 justify-between md:mt-[1rem] bg-stone-950/20 backdrop-blur-sm rounded-xl overflow-hidden"
             variants={{
                 hidden: { 
                     x: 0,
